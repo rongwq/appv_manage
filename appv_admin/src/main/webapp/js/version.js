@@ -53,6 +53,21 @@ function initUploadFile(){
 	}
 }
 
+function delFile(fileName, element){
+	$.ajax({
+		url : getRootPath() + "/file/delete",
+		data : {"fileName" : fileName,"fileType" : "file"},
+		dataType: "text",
+		success: function(data) {
+			$(element).prev().remove();
+			$("#file").removeAttr("disabled");
+			$("#isFile").val("0");
+			$("#url").val("");
+			$(element).remove();
+		}
+	});
+}
+
 
 /**
  * 初始化删除事件

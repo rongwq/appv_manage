@@ -244,7 +244,7 @@ public class FileUtil {
     	if (fileName.lastIndexOf("/") != -1) {			
 			fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
 		}
-    	FtpUtil.deleteFile(fileName);
+    	FtpUtil.deleteFile(fileName,"img");
     }
     
     /**

@@ -106,11 +106,12 @@ public class FileController extends Controller {
 
 	public void delete() {
 		String fileName = getPara("fileName");
+		String fileType = getPara("fileType",MyConst.ftp_files);
 		if (fileName.lastIndexOf("/") != -1) {			
 			fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
 		}
 		
-		if(FtpUtil.deleteFile(fileName)) {
+		if(FtpUtil.deleteFile(fileName,fileType)) {
 			renderJson("result", true);
 		} else {
 			renderJson("result", false);

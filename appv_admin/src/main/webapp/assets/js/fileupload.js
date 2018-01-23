@@ -1,6 +1,6 @@
 var img = "<img class='am-img-thumbnail' height='120px' width='120px' src='";
-var closeHead = "<a class='am-close am-close-alt am-icon-times' onclick=\"deleteFile('";
-var closeFoot = "', this)\"/>";
+var closeHead = "<a class='am-close am-close-alt am-icon-times' onclick=\"delImg('";
+var closeFoot = "',this)\"/>";
 var foot = "'/>";
 var inputHead = "<input name='";
 var inputName = "img";
@@ -79,11 +79,12 @@ $(function() {
 		}
 	}
 });
-function deleteFile(fileName, element) {
+function delImg(fileName, element) {
 	$.ajax({
 		url : getRootPath() + "/file/delete",
 		data : {
-			"fileName" : fileName
+			"fileName" : fileName,
+			"fileType" : 'img'
 		},
 		dataType : "text",
 		success : function(data) {
@@ -96,3 +97,5 @@ function deleteFile(fileName, element) {
 		}
 	});
 }
+
+

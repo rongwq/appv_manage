@@ -107,7 +107,7 @@ public class FtpUtil {
 	 * @param filename
 	 * @return
 	 */
-	  public static boolean deleteFile(String filename){
+	  public static boolean deleteFile(String filename,String type){
 		boolean flag = false;
 		  FTPClient ftpClient = new FTPClient();
 		  try {
@@ -120,15 +120,23 @@ public class FtpUtil {
 			  if(!FTPReply.isPositiveCompletion(replyCode)){
 				  return flag;
 		       }
+			  String ftpWorking = "";
 			  //切换FTP目录
-			  ftpClient.changeWorkingDirectory(MyConst.ftp_imgs);
+			  if ("img".equals(type)) {
+				  ftpWorking = MyConst.ftp_imgs;
+			  } else if ("file".equals(type)) {
+				  ftpWorking = MyConst.ftp_files;
+			  } else{
+				  ftpWorking = MyConst.ftp_files;
+			  }
+			  ftpClient.changeWorkingDirectory(ftpWorking);
 			  ftpClient.dele(filename);
 			  ftpClient.logout();
 			  flag = true;
-			  logger.info("删除图片成功");
+			  logger.info(type+"删除成功");
 		  } catch (Exception e) {
 			  e.printStackTrace();
-			  logger.info("删除图片失败");
+			  logger.info(type+"删除失败");
 		  } finally{
 			  if(ftpClient.isConnected()){
 				  try {
