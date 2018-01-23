@@ -19,6 +19,7 @@ function initUploadFile(){
 		url : getRootPath() + "/file/upload?type=file",
 		dataType: 'json',
 		change: function(e, data) {
+			$('#my-modal-loading').modal('open');
             if(data.files.length > 1){
                 alert("一次只能选择一个文件上传");
                 return false;
@@ -33,22 +34,31 @@ function initUploadFile(){
         	$(e.target).before("<span class='am-badge' name='file'>" + fileName + "</span>");
         	$("#fileSize").val(size);
         	$("#isFile").val("1");
-        	$(e.target).before("<a class='am-close am-close-alt am-icon-times'/>");
+        	$(e.target).before("<a class='am-close am-close-alt am-icon-times'onclick='delFile(\"" + fileName + "\",this)'/>");
         	var spans = $(e.target).siblings("span");
-        	if($(e.target).attr("number")) {
-        		if(spans.length >= $(e.target).attr("number")){
+        	if($(e.target).data("number")) {
+        		if(spans.length >= $(e.target).data("number")){
         			$(e.target).attr("disabled", true);
         		}
         	}
+        },
+        progressall: function (e, data) {//进度条
+        	 var progress = parseInt(data.loaded / data.total * 100, 10);
+        	 $('#loading-txt').html("正在上传..."+progress+"%");
+        },fail : function(e,data){//异常处理
+        	alert("文件上传异常");
+        },always: function (e,data){
+        	$('#my-modal-loading').modal('close');
         }
 	});
 	
 	var showFile = $("#showFile");
 	var fileNameVal = $("#showFile").val();
 	var isFile = $("#isFile").val();
-	if(isFile) {		
-		$(showFile).after("<a class='am-close am-close-alt am-icon-times' onclick='delFile(\"" + fileNameVal + "\",this)'/>");
-		$(showFile).after("<span class='am-badge' name='file'>" + fileNameVal + "</span>");
+	if(isFile) {
+		var fileName = fileNameVal.substring(fileNameVal.lastIndexOf("/") + 1);
+		$(showFile).after("<a class='am-close am-close-alt am-icon-times' onclick='delFile(\"" + fileName + "\",this)'/>");
+		$(showFile).after("<span class='am-badge' name='file'>" + fileName + "</span>");
 		$("#file").attr("disabled", true);
 	}
 }

@@ -14,6 +14,7 @@ $(function() {
 				url : getRootPath() + "/file/uploadImg",
 				dataType : 'json',
 				change : function(e, data) {
+					$('#my-modal-loading').modal('open');
 					if (data.files.length > 1) {
 						alert("一次只能选择一张图片上传");
 						return false;
@@ -43,7 +44,15 @@ $(function() {
 							$(e.target).attr("disabled", true);
 						}
 					}
-				}
+				},
+		        progressall: function (e, data) {//进度条
+		        	 var progress = parseInt(data.loaded / data.total * 100, 10);
+		        	 $('#loading-txt').html("正在上传..."+progress+"%");
+		        },fail : function(e,data){//异常处理
+		        	alert("文件上传异常");
+		        },always: function (e,data){
+		        	$('#my-modal-loading').modal('close');
+		        }
 			});
 	//显示数据
 	var showImage = $("input[name=showImage]");

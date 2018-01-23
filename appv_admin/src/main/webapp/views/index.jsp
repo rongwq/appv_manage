@@ -365,6 +365,15 @@
     </div>
   </div>
 </div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd" id="loading-txt">正在上传...</div>
+    <div class="am-modal-bd">
+      <span class="am-icon-spinner am-icon-spin"></span>
+    </div>
+  </div>
+</div>
 	
 <!-- amaze ui 模态窗口 end -->
 	<!-- 公共js -->
