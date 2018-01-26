@@ -136,5 +136,13 @@ public abstract class BaseVersion<M extends BaseVersion<M>> extends Model<M> imp
 	public java.lang.String getAppCode() {
 		return getStr("app_code");
 	}
+	
+	public void setVersionNo(java.lang.Integer versionNo) {
+		set("version_no", versionNo);
+	}
+
+	public java.lang.Integer getVersionNo() {
+		return getInt("version_no");
+	}
 
 }

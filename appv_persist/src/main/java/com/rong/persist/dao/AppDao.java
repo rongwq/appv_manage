@@ -20,4 +20,9 @@ public class AppDao extends BaseDao<App>{
 		sqlExceptSelect += orderBy;
 		return dao.paginate(pageNo, pageSize, select, sqlExceptSelect);
 	}
+	
+	public App findByCode(String code) {
+		String sql = "select " + FILEDS + " from "+App.TABLE + " where app_code = ?";
+		return dao.findFirst(sql,code);
+	}
 }

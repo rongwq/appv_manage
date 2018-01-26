@@ -82,10 +82,10 @@
 												</shiro:hasPermission>
 												<shiro:hasPermission name="user-update"> 
 													<c:if test="${item.isPublish }">
-														<button type="button" data-id="${item.id}" name="disableBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>禁用</button> 
+														<button type="button" onclick="disable(${item.id})" name="disableBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>禁用</button> 
 													</c:if>
 													<c:if test="${!item.isPublish }">
-														<button type="button" data-id="${item.id}" name="enableBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>发布</button> 
+														<button type="button" onclick="enable(${item.id})" name="enableBtn" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>发布</button> 
 													</c:if>
 												</shiro:hasPermission>
 			            						<shiro:hasPermission name="user-update">  

@@ -25,7 +25,7 @@ public class FileController extends Controller {
 	
 	public void upload() {
 		String webPath = PathKit.getWebRootPath();
-		Integer size = 200 * 1024 * 1024;
+		Integer size = 10 * 1024 * 1024 * 1024;//文件最大10G
 		String upload = MyConst.ftp_files.substring(1, MyConst.ftp_files.length() - 1);
 		String filePath = webPath.substring(0, webPath.lastIndexOf(File.separator) + 1) + upload;
 		UploadFile uploadFile = this.getFiles(filePath, size, "utf-8").get(0);
@@ -49,7 +49,7 @@ public class FileController extends Controller {
 	
 	public void uploadImg() {
 		String webPath = PathKit.getWebRootPath();
-		Integer size = 20 * 1024 * 1024;
+		Integer size = 20 * 1024 * 1024;//文件最大20M
 		String upload = MyConst.ftp_imgs.substring(1, MyConst.ftp_imgs.length() - 1);
 		String filePath = webPath.substring(0, webPath.lastIndexOf(File.separator) + 1) + upload;
 		UploadFile uploadFile = this.getFiles(filePath, size, "utf-8").get(0);

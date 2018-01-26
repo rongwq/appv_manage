@@ -11,4 +11,5 @@ import com.rong.persist.model.App;
  */
 public interface AppService extends BaseService<App>{
 	Page<App> list(int pageNo,int pageSize);
+	App findByCode(String code);
 }

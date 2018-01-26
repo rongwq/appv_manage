@@ -12,7 +12,7 @@ import com.rong.persist.model.Version;
  */
 public class VersionDao extends BaseDao<Version>{
 	private Version dao = Version.dao;
-	public static final String FILEDS = "id,app_id,app_name,app_code,version_name,system_type,download_url,icon_url,file_size,app_version,is_publish,auto_download,is_file,remark,create_time,update_time";
+	public static final String FILEDS = "id,version_no,app_id,app_name,app_code,version_name,system_type,download_url,icon_url,file_size,app_version,is_publish,auto_download,is_file,remark,create_time,update_time";
 	
 	public Page<Version> list(String appCode,int page,int pagesize) {
 		String select = "select " + FILEDS;

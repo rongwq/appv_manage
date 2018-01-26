@@ -6,8 +6,6 @@ $(function() {
 	initPage();//初始化分页
 	initQueryForm();
 	initDelete();
-	initDisable();
-	initEnable();
 	initUploadFile();
 });
 
@@ -108,59 +106,43 @@ function initDelete(){
 }
 
 /**
- * 初始启用事件
+ * 启用事件
  */
-function initEnable(){
-	$("button[name='enableBtn']").on('click', function() {
-		$('#confirm_msg').text("确定启用此版本？");
-	      $('#my_confirm').modal({
-	        relatedTarget: this,
-	        onConfirm: function(options) {
-	        	var $link = $(this.relatedTarget);
-	        	$.ajax({
-	           		url:getRootPath()+"/appv/versionEnable",
-	           		data:{"id":$link.data("id")},
-	           		dataType:"text",
-	           		success:function(data){
-	           			$('#my_confirm').modal("close");
-	           			var obj = jQuery.parseJSON(data);
-	           			alert(obj.resultDes);
-	           			if(obj.resultCode == '1'){
-	           				doQuery();
-	           			}
-	           		}
-	           	})
-	        }
-	      });
-	    });
+function enable(id) {
+	$.ajax({
+		url : getRootPath() + "/appv/versionEnable",
+		data : {
+			"id" : id
+		},
+		dataType : "text",
+		success : function(data) {
+			var obj = jQuery.parseJSON(data);
+			alert(obj.resultDes);
+			if (obj.resultCode == '1') {
+				doQuery();
+			}
+		}
+	});
 }
 
 /**
- * 初始禁用事件
+ * 禁用事件
  */
-function initDisable(){
-	$("button[name='disableBtn']").on('click', function() {
-		$('#confirm_msg').text("确定禁用此版本？");
-	      $('#my_confirm').modal({
-	        relatedTarget: this,
-	        onConfirm: function(options) {
-	        	var $link = $(this.relatedTarget);
-	        	$.ajax({
-	           		url:getRootPath()+"/appv/versionDisable",
-	           		data:{"id":$link.data("id")},
-	           		dataType:"text",
-	           		success:function(data){
-	           			$('#my_confirm').modal("close");
-	           			var obj = jQuery.parseJSON(data);
-	           			alert(obj.resultDes);
-	           			if(obj.resultCode == '1'){
-	           				doQuery();
-	           			}
-	           		}
-	           	})
-	        }
-	      });
-	    });
+function disable(id) {
+	$.ajax({
+		url : getRootPath() + "/appv/versionDisable",
+		data : {
+			"id" : id
+		},
+		dataType : "text",
+		success : function(data) {
+			var obj = jQuery.parseJSON(data);
+			alert(obj.resultDes);
+			if (obj.resultCode == '1') {
+				doQuery();
+			}
+		}
+	});
 }
 
 

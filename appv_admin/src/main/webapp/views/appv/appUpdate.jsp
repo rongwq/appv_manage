@@ -16,7 +16,7 @@
 					<div class="am-form-group">
 		    			<label for="mobile" class="am-u-sm-3 am-form-label">CODE</label>
 		    			<div class="am-u-sm-9">
-		      				<input class="am-form-field" type="text" name="appCode" id="appCode" placeholder="输入APP的CODE" value="${model.appCode }" required="required"  maxlength="16">
+		      				<input readonly="readonly" class="am-form-field" type="text" name="appCode" id="appCode" placeholder="输入APP的CODE" value="${model.appCode }" required="required"  maxlength="16">
 		    			</div>
 					</div>
 					<div class="am-form-group">
@@ -43,7 +43,7 @@
 					<div class="am-form-group">
 						<div class="am-u-sm-9 am-u-sm-push-3">
 		  					<input type="submit" class="am-btn am-btn-primary" value="提交">
-		  					<input type="button" onclick="javascript:loadRight('<%=basePath %>/admin/userList?page=${page }')" class="am-btn am-btn-default" value="返回">
+		  					<input type="button" onclick="javascript:loadRight('<%=basePath %>/appv/appList?page=${page }')" class="am-btn am-btn-default" value="返回">
 	  					</div>
   					</div>
   				</form>

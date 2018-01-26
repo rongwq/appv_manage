@@ -18,5 +18,10 @@ public class AppServiceImpl extends BaseServiceImpl<App> implements AppService {
 		return dao.list(pageNo, pageSize);
 	}
 
+	@Override
+	public App findByCode(String code) {
+		return dao.findByCode(code);
+	}
+
 }
 

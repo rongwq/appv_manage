@@ -47,6 +47,7 @@ public class AppVController extends BaseController{
 		String remark = getPara("remark");
 		Boolean autoDownload = getParaToBoolean("autoDownload");
 		Boolean isFile = getParaToBoolean("isFile");
+		Integer versionNo = getParaToInt("versionNo");
 		Version model = new Version();
 		model.setCreateTime(new Date());
 		model.setAppId(appId);
@@ -62,6 +63,7 @@ public class AppVController extends BaseController{
 		model.setAutoDownload(autoDownload);
 		model.setIsFile(isFile);
 		model.setIsPublish(false);
+		model.setVersionNo(versionNo);
 		model.save();
 		BaseRenderJson.returnAddObj(this, true);
 		logger.info("[操作日志]新增版本信息成功：" + model.toJson());
@@ -90,6 +92,7 @@ public class AppVController extends BaseController{
 		String remark = getPara("remark");
 		Boolean autoDownload = getParaToBoolean("autoDownload");
 		Boolean isFile = getParaToBoolean("isFile");
+		Integer versionNo = getParaToInt("versionNo");
 		Version model = versionService.findById(id);
 		model.setVersionName(versionName);
 		model.setAppVersion(appVersion);
@@ -101,6 +104,7 @@ public class AppVController extends BaseController{
 		model.setIsFile(isFile);
 		model.setUpdateTime(new Date());
 		model.setRemark(remark);
+		model.setVersionNo(versionNo);
 		model.update();
 		BaseRenderJson.returnUpdateObj(this, true);
 		logger.info("[操作日志]更新APP版本成功："+model.toJson());
@@ -162,6 +166,11 @@ public class AppVController extends BaseController{
 		String appName = getPara("appName");
 		String appCode = getPara("appCode");
 		String remark = getPara("remark");
+		App app = appService.findByCode(appCode);
+		if(app!=null){
+			BaseRenderJson.returnJsonS(this, 0, "code【"+appCode+"】已存在");
+			return;
+		}
 		App model = new App();
 		model.setAppName(appName);
 		model.setAppCode(appCode);
@@ -178,11 +187,9 @@ public class AppVController extends BaseController{
 	public void appUpdate(){
 		Long id = getParaToLong("id");
 		String appName = getPara("appName");
-		String appCode = getPara("appCode");
 		String remark = getPara("remark");
 		App model = appService.findById(id);
 		model.setAppName(appName);
-		model.setAppCode(appCode);
 		model.setUpdateTime(new Date());
 		model.setRemark(remark);
 		model.update();

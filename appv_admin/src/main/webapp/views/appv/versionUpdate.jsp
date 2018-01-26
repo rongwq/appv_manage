@@ -28,9 +28,15 @@
 					    </div>
 					</div>
 					<div class="am-form-group">
+					    <label for="versionNo" class="am-u-sm-2 am-form-label">版本码(android)</label>
+					    <div class="am-u-sm-10">
+					      	<input class="am-form-field" type="number" name="versionNo" max="999999999" placeholder="输入版本码" required="required" value="${model.versionNo }">
+					    </div>
+					</div>
+					<div class="am-form-group">
 					    <label for="downloadUrl" class="am-u-sm-2 am-form-label">下载链接</label>
 					    <div class="am-u-sm-10">
-					      	<input class="am-form-field" type="text" id="downloadUrl" name="downloadUrl" placeholder="输入下载链接" value="${model.downloadUrl }" required="required">
+					      	<input class="am-form-field" type="text" id="downloadUrl" name="downloadUrl" placeholder="输入下载链接" value="${model.downloadUrl }" >
 					    </div>
 					</div>
 					<div class="am-form-group">
@@ -61,7 +67,7 @@
 						<div class="am-u-sm-10">
 							<input type="hidden" name="showImage" value="${model.iconUrl }">
 							<!-- number是用来限制上传图片的数量，达到数量则上传按钮会失效，如果不想做限制，则可以去除掉number属性或者是设置为大数量如1000-->
-							<input required="required" type="file" name="files[]" multiple class="am-form-field" data-number="1"/>
+							<input type="file" name="files[]" multiple class="am-form-field" data-number="1"/>
 						</div>
 					</div>
 					
