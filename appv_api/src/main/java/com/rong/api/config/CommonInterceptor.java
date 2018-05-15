@@ -1,5 +1,7 @@
 package com.rong.api.config;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.rong.common.bean.BaseRenderJson;
@@ -25,6 +27,20 @@ public class CommonInterceptor implements Interceptor {
 
 	@Override
 	public void intercept(Invocation ai){
+		// 跨域处理
+		setResponseHeader(ai.getController().getResponse());
 		doMain(ai);
+	}
+	
+	/**
+	 * 通过设置响应头里的Header，来指定可以跨域访问的客户端
+	 * @param response
+	 */
+	private static void setResponseHeader(HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Credentials", "true");
+		response.setHeader("Access-Control-Allow-Methods", "*");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type,Access-Token");
+		response.setHeader("Access-Control-Expose-Headers", "*");
 	}
 }

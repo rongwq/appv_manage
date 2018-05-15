@@ -1,0 +1,15 @@
+jdbcUrl = jdbc:mysql://web_1:3306/appv?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+user = bs_user
+password= vswNOIgh_fcmwenopiBU
+devMode = false
+
+#ftp上传
+ftp_host=web_1
+ftp_port=21
+ftp_username=bs_user
+ftp_pwd=8R580943dd_a4e4bT95d3eb#3a7e2sd
+ftp_imgs =/imgs/
+ftp_files =/files/
+
+#文件访问前缀
+imgUrlHead = http://54.219.0.219
