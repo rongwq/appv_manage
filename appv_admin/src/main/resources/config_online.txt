@@ -1,6 +1,6 @@
 jdbcUrl = jdbc:mysql://web_1:3306/appv?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
-user = bs_user
-password= vswNOIgh_fcmwenopiBU
+user = appv_user
+password= nkoVV32689_ndjUsd3B
 devMode = false
 
 #ftp上传
@@ -12,4 +12,4 @@ ftp_imgs =/imgs/
 ftp_files =/files/
 
 #文件访问前缀
-imgUrlHead = http://54.219.0.219
+imgUrlHead = http://file.coinsfair.net
