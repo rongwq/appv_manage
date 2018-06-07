@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://test_1:3306/appv?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+user = bs_user
+password= dhmL_s3321nOe2da
+devMode = false

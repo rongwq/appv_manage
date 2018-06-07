@@ -12,4 +12,4 @@ ftp_imgs =/imgs/
 ftp_files =/files/
 
 #文件访问前缀
-imgUrlHead = http://file.coinsfair.net
+imgUrlHead = https://file.coinsfair.net
