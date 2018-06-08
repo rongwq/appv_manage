@@ -1,10 +1,10 @@
-jdbcUrl = jdbc:mysql://52.52.10.94:3306/appv?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+jdbcUrl = jdbc:mysql://test_1:3306/appv?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
 user = bs_user
 password= dhmL_s3321nOe2da
 devMode = false
 
 #ftp上传
-ftp_host=web_1
+ftp_host=test_1
 ftp_port=21
 ftp_username=bs_user
 ftp_pwd=nkj7823hoKH_nwneqwfnlkfqskl12test
@@ -12,4 +12,4 @@ ftp_imgs =/imgs/
 ftp_files =/files/
 
 #文件访问前缀
-imgUrlHead = https://file.coinsfair.net
+imgUrlHead = https://file-test.coinsfair.net
